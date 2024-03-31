@@ -1,7 +1,7 @@
 import { BlogContext } from "../context/BlogContext";
 import { useContext } from "react";
 
-const useBlogsContext = () => {
+export const useBlogsContext = () => {
     const context = useContext(BlogContext);
 
     if (!context) {
