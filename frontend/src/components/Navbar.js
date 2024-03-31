@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useLogout } from "../hooks/useLogout";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useNavigate } from "react-router-dom";
+import treeicon from "./Treeblogincon.png";
 
 const Navbar = () => {
     const { logout } = useLogout()
@@ -16,9 +17,12 @@ const Navbar = () => {
     return (
         <header>
             <div className="container">
+                <div className="iconheader">
+            <img className='treeicon' src={treeicon} alt="treeblogicon" />
                 <Link to="/">
                     <h1>TreeBlog</h1>
                 </Link>
+                </div>
                 <div className="navlinks">
                     <nav>
                     {user && (<Link to='/'>Home</Link>)}

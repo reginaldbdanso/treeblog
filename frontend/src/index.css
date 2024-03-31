@@ -286,3 +286,14 @@ form.signup, form.login {
 .modal-content button:last-child {
   margin-bottom: 0;
 }
+.treeicon {
+  width: 100px;
+  display: flex;
+align-items: center;
+}
+
+.iconheader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
