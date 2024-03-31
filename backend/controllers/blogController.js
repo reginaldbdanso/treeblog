@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 
 // GET all Blogs
 const getBlogs = async (req, res) => {
-    const blog = await Blog.find().sort({createdAt: -1});
+    const user_id = req.user._id;
+    const blog = await Blog.find({user_id}).sort({createdAt: -1});
     res.status(200).json(blog);
 }
 
