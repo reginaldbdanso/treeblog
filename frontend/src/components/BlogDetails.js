@@ -1,17 +1,27 @@
-// import useBlogsContext from "../hooks/useBlogContext";
+import useBlogsContext from "../hooks/useBlogContext";
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
+import { useAuthContext } from '../hooks/useAuthContext';
 
 
 const BlogDetails = ({blog}) => {
     // const {dispatch} = useBlogsContext();
+    // const {user} = useAuthContext();
+
     // const handleClick = async () => {
+    //     if (!user) {
+    //         return
+    //     }
+        
     //     const response = await fetch(process.env.REACT_APP_API_URL + '/' + blog._id, {
-    //         method: 'DELETE'
+    //         method: 'DELETE',
+    //         headers: {
+    //                "Authorization": `Bearer ${user.token}`
+    //         }
     //     })
     //     // const json = await response.json();
 
     //     if (response.ok) {
-    //         dispatch({type: 'DELETE_Blog', payload: blog._id});
+    //         dispatch({type: 'DELETE_BLOG', payload: blog._id});
     //     }
     // }
 
