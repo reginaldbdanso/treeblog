@@ -6,15 +6,23 @@ const blogReducer = (state, action) => {
     switch (action.type) {
         case 'SET_BLOGS':
             return {
-                blogs: action.payload
+                blogs: action.payload,
+                userblogs: state.userblogs
+            }
+        case 'SET_USER_BLOGS':
+            return {
+                blogs: state.blogs,
+                userblogs: action.payload
             }
         case 'CREATE_BLOG':
             return {
-                blogs: [action.payload, ...state.blogs]
+                blogs: [action.payload, ...state.blogs],
+                userblogs: [action.payload, ...state.userblogs]
             }
         case 'DELETE_BLOG':
             return {
-                blogs: state.blogs.filter((blog) => blog._id !== action.payload)
+                blogs: state.blogs.filter((blog) => blog._id !== action.payload),
+                userblogs: state.userblogs.filter((blog) => blog._id !== action.payload)
             }
         default:
             return state;
@@ -23,7 +31,9 @@ const blogReducer = (state, action) => {
 
 export const MyBlogContextProvider = ({ children }) => {
     const [state, dispatch] = useReducer(blogReducer, {
-        blogs: null
+        blogs: [],
+        userblogs: null
+
     })
 
     return (

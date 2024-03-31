@@ -26,7 +26,8 @@ const Navbar = () => {
                 <div className="navlinks">
                     <nav>
                     {user && (<Link to='/'>Home</Link>)}
-                    {user && (<Link to='/blogs'>Blogs</Link>)}
+                    {user && (<Link to='/blogs'>All Blogs</Link>)}
+                    {user && (<Link to='/myblogs'>My Blogs</Link>)}
                     {user && (<Link to='/about'>About</Link>)}
                     {!user && (
                     <div>

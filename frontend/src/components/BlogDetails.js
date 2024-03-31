@@ -3,7 +3,7 @@ import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 import { useAuthContext } from '../hooks/useAuthContext';
 
 
-const BlogDetails = ({blog}) => {
+const BlogDetails = ({userblog}) => {
     const {dispatch} = useBlogsContext();
     const {user} = useAuthContext();
 
@@ -12,7 +12,7 @@ const BlogDetails = ({blog}) => {
             return
         }
         
-        const response = await fetch(process.env.REACT_APP_API_URL + '/' + blog._id, {
+        const response = await fetch(process.env.REACT_APP_API_URL + '/' + userblog._id, {
             method: 'DELETE',
             headers: {
                    "Authorization": `Bearer ${user.token}`
@@ -21,16 +21,16 @@ const BlogDetails = ({blog}) => {
         // const json = await response.json();
 
         if (response.ok) {
-            dispatch({type: 'DELETE_BLOG', payload: blog._id});
+            dispatch({type: 'DELETE_BLOG', payload: userblog._id});
         }
     }
 
     return (
         <div className="blog-details">
-            <h2>{blog.title}</h2>
-            <p><strong>Author: </strong>{blog.author}</p>
-            <p><strong></strong>{blog.body}</p>
-            {blog.createdAt && !isNaN(Date.parse(blog.createdAt)) && <p>{formatDistanceToNow(new Date(blog.createdAt), {addSuffix: true})}</p>}
+            <h2>{userblog.title}</h2>
+            <p><strong>Author: </strong>{userblog.author}</p>
+            <p><strong></strong>{userblog.body}</p>
+            {userblog.createdAt && !isNaN(Date.parse(userblog.createdAt)) && <p>{formatDistanceToNow(new Date(userblog.createdAt), {addSuffix: true})}</p>}
             <span className="material-symbols-outlined" onClick={handleClick}>delete</span>
         </div>
     );

@@ -1,19 +1,18 @@
 import { useEffect } from "react";
-import AllBlogDetails from "../components/AllBlogDetails";
-// import BlogForm from "../components/BlogForm";
+import BlogDetails from "../components/BlogDetails";
+import BlogForm from "../components/BlogForm";
 import useBlogsContext from "../hooks/useBlogContext";
 import { useAuthContext } from "../hooks/useAuthContext";
 
 
-const Blogs = () => {
-    // const [Blogs, setBlogs] = useState(null)
-    const { blogs, dispatch } = useBlogsContext()
+const MyBlogs = () => {
+    const { userblogs, dispatch } = useBlogsContext()
     const { user } = useAuthContext()
 
 
     useEffect(() => {
         const fetchBlogs = async () => {
-            const response = await fetch(process.env.REACT_APP_API_URL, {
+            const response = await fetch(process.env.REACT_APP_API_URL + "/user", {
                 headers: {
                     "Authorization": `Bearer ${user.token}`
                 }
@@ -22,7 +21,7 @@ const Blogs = () => {
 
             if (response.ok) {
                 // setBlogs(json);
-                dispatch({ type: 'SET_BLOGS', payload: json })
+                dispatch({ type: 'SET_USER_BLOGS', payload: json })
             }
         }
 
@@ -30,15 +29,16 @@ const Blogs = () => {
     }, [dispatch, user]);
 
     return (
-        <div className="allblogs">
+        <div className="myblogs">
             <div className="Blogs">
-                {!blogs && <div>Loading...</div>}
-                {blogs && blogs.map((blog) => (
-                    <AllBlogDetails key={blog._id} blog={blog} />
+                {!userblogs && <div>Loading...</div>}
+                {userblogs && userblogs.map((userblog) => (
+                    <BlogDetails key={userblog._id} userblog={userblog} />
                 ))}
             </div>
+            <BlogForm />
         </div>
     );
 }
 
-export default Blogs;
+export default MyBlogs;
