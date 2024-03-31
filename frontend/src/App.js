@@ -28,7 +28,7 @@ function App() {
             <Route path="/myblogs" exact element={user ? <MyBlogs /> : <Navigate to="/login" />} />
             <Route path="/about" exact element={user ? <About /> : <Navigate to="/login" />} />
             <Route path="/login" exact element={!user ? <Login /> : <Navigate to="/" />} />
-            <Route path="/signup" exact element={!user ? <Signup /> : <Navigate to="/" />} />
+            <Route path="/signup" exact element={!user ? <Signup /> : <Navigate to="/signup" />} />
           </Routes>
         </div>
         <Footer />
