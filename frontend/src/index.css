@@ -44,7 +44,7 @@ header .container {
   /* width: 310px; */
   font-size: 1.1rem;
   justify-content: space-between;
-  width: 650px;
+  /* width: 650px; */
   align-items: center;
 }
 header a {
