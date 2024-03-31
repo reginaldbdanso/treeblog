@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import BlogDetails from "../components/BlogDetails";
-import BlogForm from "../components/BlogForm";
+import AllBlogDetails from "../components/AllBlogDetails";
+// import BlogForm from "../components/BlogForm";
 import useBlogsContext from "../hooks/useBlogContext";
 import { useAuthContext } from "../hooks/useAuthContext";
 
@@ -30,14 +30,13 @@ const Blogs = () => {
     }, [dispatch, user]);
 
     return (
-        <div className="home">
+        <div className="allblogs">
             <div className="Blogs">
                 {!blogs && <div>Loading...</div>}
                 {blogs && blogs.map((blog) => (
-                    <BlogDetails key={blog._id} blog={blog} />
+                    <AllBlogDetails key={blog._id} blog={blog} />
                 ))}
             </div>
-            <BlogForm />
         </div>
     );
 }
