@@ -1,5 +1,6 @@
 import { useState } from "react";
 import useBlogsContext from "../hooks/useBlogContext";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 const BlogForm = () => {
     const { dispatch} = useBlogsContext()
@@ -8,16 +9,26 @@ const BlogForm = () => {
     const [author, setAuthor] = useState('')
     const [error, setError] = useState(null)
     const [emptyFields, setEmptyFields] = useState([])
+    const { user } = useAuthContext()
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         
+        if (!user) {
+            setError('You must be logged in to add a blog');
+            return
+        }
+        console.log('submitting form', user);
         const blog = {title, body, author};
 
         const response = await fetch(process.env.REACT_APP_API_URL, {
             method: 'POST',
             body: JSON.stringify(blog),
-            headers: {'Content-Type': 'application/json'}
+            headers: {
+                'Content-Type': 'application/json',
+                "Authorization": `Bearer ${user.token}`     
+        }
+          
 
         })
         const json = await response.json();
