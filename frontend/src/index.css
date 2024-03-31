@@ -41,9 +41,11 @@ header .container {
 }
 .navlinks {
   display: flex;
-  width: 310px;
+  /* width: 310px; */
   font-size: 1.1rem;
   justify-content: space-between;
+  width: 650px;
+  align-items: center;
 }
 header a {
   color: #333;
@@ -194,10 +196,7 @@ nav button {
   cursor: pointer;
   font-size: 1em;
 }
-.navlinks {
-  width:400px;
-  align-items: center;
-}
+
 /* auth forms */
 form.signup, form.login {
   max-width: 400px;
