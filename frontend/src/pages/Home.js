@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import Featured from "../components/Featured";
 // import BlogForm from "../components/BlogForm";
 import useBlogsContext from "../hooks/useBlogContext";
-import image from "../magazine-3680549_1920.webp";
 import { useAuthContext } from "../hooks/useAuthContext";
 
 const Home = () => {
