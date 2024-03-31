@@ -17,7 +17,7 @@ const Footer = () => {
     return (
         <footer className="footer">
             <p>
-                <a href="#" onClick={openModal}>Terms and Conditions</a>
+                <span onClick={openModal}>Terms and Conditions</span>
             </p>
             <p>&copy; {currentYear}  TreeBlog. All rights reserved.</p>
 

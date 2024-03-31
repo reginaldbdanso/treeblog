@@ -1,6 +1,6 @@
-import useBlogsContext from "../hooks/useBlogContext";
+// import useBlogsContext from "../hooks/useBlogContext";
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
-import { useAuthContext } from '../hooks/useAuthContext';
+// import { useAuthContext } from '../hooks/useAuthContext';
 
 
 const BlogDetails = ({blog}) => {
