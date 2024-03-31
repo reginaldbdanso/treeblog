@@ -4,6 +4,7 @@ const router = express.Router();
 const {
     createBlog,
     getBlogs,
+    getUserBlogs,
     getBlog,
     deleteBlog,
     updateBlog
@@ -14,6 +15,9 @@ router.use(requireAuth);
 
 // GET all Blogs
 router.get('/', getBlogs)
+
+// GET all Blogs by a user
+router.get('/user', getUserBlogs)
 
 //GET a single Blog
 router.get('/:id', getBlog)
