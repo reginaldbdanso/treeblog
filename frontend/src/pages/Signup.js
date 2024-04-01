@@ -1,17 +1,16 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { useSignup } from '../hooks/useSignup'
 
 const Signup = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const {signup, error, loading} = useSignup()
-    const navigate = useNavigate()
+    const { signup, error, loading } = useSignup()
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-    await signup(email, password)
-    navigate('/')
+
+            await signup(email, password)
+
     }
 
     return (
@@ -32,12 +31,17 @@ const Signup = () => {
                     onChange={(e) => setPassword(e.target.value)}
                     value={password}
                 />
+                <div className="password">
+                    <p>Password must contain at least 8 characters, 1 lowercase, 1 uppercase, 1 number, and 1 symbol</p>
 
+                </div>
                 <button disabled={loading}>{loading ? 'Loading...' : 'Signup'}</button>
                 {error && <div className="error">{error}</div>}
                 {/* <button type="submit" disabled={loading}>{loading ? 'Loading...' : 'Signup'}</button>
                 {error && <div className="error">{error}</div>} */}
+
             </form>
+
         </div>
     )
 }
